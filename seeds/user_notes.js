@@ -12,7 +12,11 @@ exports.seed = function(knex) {
         }).then(() => {
             return knex('notes').insert([
                 { content: 'feed Ame', user_id: 1 },
-                { content: 'feed Cartier', user_id: 2 }
+                { content: 'photo shooting', user_id: 1 },
+                { content: 'shopping gift for mom', user_id: 1 },
+                { content: 'feed Cartier', user_id: 2 },
+                { content: 'photo shooting', user_id: 2 },
+                { content: 'golf day', user_id: 2 }
             ])
         })
 };

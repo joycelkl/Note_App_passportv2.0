@@ -3,7 +3,7 @@ const app = express();
 const basicAuth = require("express-basic-auth");
 const handlebars = require('express-handlebars');
 const authFunction = require('./auth');
-const path = require('path');
+
 
 const knexConfig = require('./knexfile').development;
 const knex = require('knex')(knexConfig);
@@ -36,6 +36,7 @@ app.get('/', (req, res, next) => {
     next();
 });
 
+//list all note after login into app
 app.get('/', (req, res) => {
     console.log(req.auth.user, req.auth.password);
 
@@ -50,33 +51,7 @@ app.get('/', (req, res) => {
 
 app.use("/api/info", new NoteRouter(noteService).router());
 
-
-// Responsible for sending our index page back to our user.
-//**************NEED TO BUILD UP NOTESERVCE*************//
-// app.get("/", (req, res) => {
-//     console.log(req.auth.user, req.auth.password);
-//     noteService.list(req.auth.user).then((data) => {
-//         console.log(data);
-//         res.render("index", {
-//             user: req.auth.user,
-//             notes: data,
-//         });
-//     });
-// });
-
-// Getting new user data from frontend
-// app.get('/insertUsers', (req, res) => {
-//     console.log(req.body.insertUsers)
-//     let query = knex.insert({ name: 'username', password: 'password' })
-//         .into('users');
-
-//     query.then((query) => {
-//         console.log(query);
-//         res.send("success");
-//     });
-// });
-
-// sending user data to frontend
+// sending user data to frontend for checking
 app.get('/users', (req, res) => {
     let query = knex('users').select('*');
     query.then((data) => {

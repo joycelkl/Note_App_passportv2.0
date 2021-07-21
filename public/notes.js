@@ -13,14 +13,13 @@ var notesTemplate = Handlebars.compile(
 
 const reloadNotes = (notes) => {
     console.log("RELOADING");
-    console.log(notes);
-    console.log(8);
     $("#notes").html(notesTemplate({ note: notes }));
-    // window.location.replace('http://localhost:1227/');
 };
+
 
 $(document).ready(function() {
 
+    // adding new note
     $('#note-taking').submit((event) => {
         event.preventDefault();
         let add = document.getElementById("taking-note").value;
@@ -39,10 +38,8 @@ $(document).ready(function() {
             .catch(err => console.log(err));
     })
 
+    // changing note content
     $('#notes').on('blur', 'textarea', (event) => {
-
-        console.log('to be changed id', $(event.currentTarget).data('id'))
-        console.log('to be changed content', $(event.currentTarget).val())
 
         let noteid = $(event.currentTarget).data('id')
 
@@ -51,13 +48,12 @@ $(document).ready(function() {
         let amend = {};
         amend.content = changes;
 
-
         axios.put('http://localhost:1227/api/info/change/' + noteid, amend).then((res) => {
             reloadNotes(res.data);
         }).catch(err => console.log(err));
-
     })
 
+    //delete note
     $('#notes').on('click', '.remove', (event) => {
         let noteid = $(event.currentTarget).data('id')
 
