@@ -1,0 +1,27 @@
+        <div class="container mt-3">
+            <h2>Have A Bright Day , {{user}} !!!</h2>
+            <div class="container-fluid">
+                <form id="note-taking" class="form-group">
+                    <label for="taking-note" id="note-space" class="form-label mt-1">Things you want to remember</label>
+                    <br>
+                    <textarea class="form-control" id="taking-note" rows="4" spellcheck="true"></textarea>
+        
+                    <div class="row justify-content-between">
+                         <button type="submit" id="addNote" class="btn btn-primary col-2 mt-2">Add Note</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="container mt-3">
+                <h5>Existing notes</h5>
+                <div id="notes" class="container-fluid">
+                    {{#each note}}
+                        <div class="note">
+                            <textarea data-id="{{ index }}">{{ content }}</textarea>
+                            <button class="remove btn btn-xs" data-id="{{ index }}"><i class="fas fa-trash-alt"
+                                    aria-hidden="true"></i></button>
+                        </div>
+                    {{/each}}
+                </div>
+        </div>

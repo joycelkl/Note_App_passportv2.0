@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note Taking App With Server</title>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Noto+Serif+JP:wght@200&family=Reggae+One&display=swap" rel="stylesheet">
+    <link href="./public/bootstrap.css" rel="stylesheet">
+    <link href="./public/notes.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expend-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <h1>Welcome to Joyce's Note Taking App</h1>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="container mt-3">
+            <h2>Have A Bright Day, {{user}}!!</h2>
+            <div class="container-fluid">
+                <div class="note-taking form-group">
+                    <label for="taking-note" id="note-space" class="form-label mt-1">Things you need to remember</label>
+                    <br>
+                    <textarea class="form-control" id="taking-note" rows="4" spellcheck="true"></textarea>
+                </div>
+                <div class="row justify-content-between">
+                    <button type="submit" id="addNote" class="btn btn-primary col-2 mt-2">Add Note</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mt-3">
+
+            <h5>Notes<span class="saving">Saving...</span></h5>
+            <div id="notes">
+                <h1>Note display between here</h4>
+                    <div class="note">
+                        <span class="input"><textarea data-id="{{ @index }}">Note Content</textarea></span>
+
+                        <button class="remove btn btn-xs" data-id="{{ @index }}"><i class="fa fa-trash"
+                                    aria-hidden="true"></i></button>
+                    </div>
+                    <h1>Note display between here</h4>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    {{!-- CDN handlebars = for Handlebars.compile --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    {{!-- CDN axios = for sending API calls (promise based)--}}
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="notes.js"></script>
+</body>
+
+</html>
