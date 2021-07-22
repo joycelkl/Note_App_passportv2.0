@@ -48,7 +48,7 @@ $(document).ready(function() {
         let amend = {};
         amend.content = changes;
 
-        axios.put('http://localhost:1227/api/info/change/' + noteid, amend).then((res) => {
+        axios.put('/api/info/change/' + noteid, amend).then((res) => {
             reloadNotes(res.data);
         }).catch(err => console.log(err));
     })
@@ -57,7 +57,7 @@ $(document).ready(function() {
     $('#notes').on('click', '.remove', (event) => {
         let noteid = $(event.currentTarget).data('id')
 
-        axios.delete('http://localhost:1227/api/info/delete/' + noteid).then((res) => {
+        axios.delete('/api/info/delete/' + noteid).then((res) => {
             reloadNotes(res.data);
         }).catch(err => console.log(err));
     })
