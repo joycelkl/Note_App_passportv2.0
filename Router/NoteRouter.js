@@ -7,7 +7,7 @@ class NoteRouter {
 
     router() {
         let router = express.Router();
-        router.get('/', this.get.bind(this));
+        router.get('/notinuse', this.get.bind(this));
         router.post('/add', this.post.bind(this));
         router.put('/change/:id', this.put.bind(this));
         router.delete('/delete/:id', this.delete.bind(this));
@@ -21,8 +21,9 @@ class NoteRouter {
 
 
     post(req, res) {
+        console.log('req', req)
         console.log('posting data', req.body.add)
-        return this.noteService.add(req.body.add, req.auth.user)
+        return this.noteService.add(req.body.add, req.user.username)
             .then((data) => {
                 console.log("posting done update", data);
                 return res.send(data)
@@ -34,7 +35,7 @@ class NoteRouter {
 
     put(req, res) {
 
-        return this.noteService.change(req.params.id, req.body.content, req.auth.user).then((data) => {
+        return this.noteService.change(req.params.id, req.body.content, req.user.username).then((data) => {
             console.log("put done update", data)
             return res.send(data)
         }).catch((err) => {
@@ -45,7 +46,7 @@ class NoteRouter {
 
     delete(req, res) {
 
-        return this.noteService.delete(req.params.id, req.auth.user).then((data) => {
+        return this.noteService.delete(req.params.id, req.user.username).then((data) => {
             console.log('delete done update', data)
             return res.send(data)
         }).catch((err) => {

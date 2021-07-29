@@ -1,0 +1,23 @@
+        <div class="container-fluid">
+            <form action="/login" method="POST">
+            <div class="form-group" id="loginform">
+                <label for="loginEmail" class="form-label mt-4">Email address</label>
+                <input type="email" name="email" class="form-control" id="loginEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                <br>
+                <label for="loginPassword" class="form-label mt-4">Password</label>
+                <input type="password" name="password" class="form-control" id="loginPassword" placeholder="Password">
+                <div class="row justify-content-around mt-4">
+                    <button type="submit" id="loginSubmit" class="btn btn-primary col-2">Login</button>
+                    <button type="button" id="signup" class="btn btn-warning col-2"><a href="/signup">Sign-Up</a></button>
+                </div>
+                <div class="row justify-content-around mt-2">
+                    <button type="button" id="fblogin" class="btn btn-info col-2"><a href="/auth/facebook">Login with Facebook</a></button>
+                    <button type="button" id="glogin" class="btn btn-success col-2"><a href="/auth/gmail">Login with Google</a></button>
+                </div>
+
+            </div>
+            </form>
+        </div>
+        
+

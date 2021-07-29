@@ -1,0 +1,20 @@
+
+            <div class="container">
+                <h3>Please fill in the below for Sign-up</h3>
+            </div>
+            <form action="/signup" method="POST">
+                        <div class="form-group" id="signUpform">
+                <label for="signUpUser" class="form-label mt-4">User Name</label>
+                <input type="text" name="username" class="form-control" id="signUpUser" placeholder="Enter user name">
+                <br>
+                <label for="signUpEmail" class="form-label mt-4">Email address</label>
+                <input type="email" name="email" class="form-control" id="signUpEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                <br>
+                <label for="signUpPassword" class="form-label mt-4">Password</label>
+                <input type="password" name="password" class="form-control" id="signUpPassword" placeholder="Password">
+                <div class="row justify-content-around mt-4">
+                    <button type="submit" id="signUpSubmit" class="btn btn-primary col-2">Submit</button>
+                </div>
+            </div>
+            </form>

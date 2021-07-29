@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note Taking App With Server</title>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Noto+Serif+JP:wght@200&family=Reggae+One&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/e6c0e94021.js" crossorigin="anonymous"></script>
+    <link href="bootstrap.css" rel="stylesheet">
+    <link href="notes.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expend-lg navbar-dark bg-dark">
+        <div class="container-fluid justify-content-around">
+            <h1>Welcome to Joyce's Note Taking App</h1>
+            <a href="/logout"><button type="button" id='logout' class="btn btn-light">Logout</button></a>
+        </div>
+    </nav>
+
+    <div class="container">
+
+      {{{ body }}}
+
+    </div>
+   
+
+
+    
+
+
+
+
+    {{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script> --}}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+    {{!-- CDN handlebars = for Handlebars.compile --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+    {{!-- CDN axios = for sending API calls (promise based)--}}
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="notes.js"></script>
+</body>
+</html>

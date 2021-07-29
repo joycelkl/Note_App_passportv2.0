@@ -1,8 +1,11 @@
 exports.up = function(knex) {
     return knex.schema.createTable('users', user => {
         user.increments('id').primary();
-        user.string('name');
-        user.string('password');
+        user.string('username');
+        user.string('email');
+        user.string('gmail_id');
+        user.string('facebook_id');
+        user.string('hash');
         user.timestamps(false, true);
     }).then(() => {
         return knex.schema.createTable('notes', note => {

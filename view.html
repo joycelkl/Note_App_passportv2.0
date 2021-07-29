@@ -14,44 +14,56 @@
 <body>
 
     <nav class="navbar navbar-expend-lg navbar-dark bg-dark">
-        <div class="container-fluid">
+        <div class="container-fluid justify-content-around">
             <h1>Welcome to Joyce's Note Taking App</h1>
+            <!-- <a class="nav-link" href="/logout">Logout</a> -->
+            <a href="/logout"><button type="button" id='logout' class="btn btn-light">Logout</button></a>
         </div>
     </nav>
 
     <div class="container">
 
-        <div class="container mt-3">
-            <h2>Have A Bright Day, {{user}}!!</h2>
-            <div class="container-fluid">
-                <div class="note-taking form-group">
-                    <label for="taking-note" id="note-space" class="form-label mt-1">Things you need to remember</label>
-                    <br>
-                    <textarea class="form-control" id="taking-note" rows="4" spellcheck="true"></textarea>
+        <div class="container-fluid">
+            <div class="form-group" id="loginform">
+                <label for="loginEmail" class="form-label mt-4">Email address</label>
+                <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                <br>
+                <label for="loginPassword" class="form-label mt-4">Password</label>
+                <input type="password" class="form-control" id="loginPassword" placeholder="Password">
+                <div class="row justify-content-around mt-4">
+                    <button type="submit" id="loginSubmit" class="btn btn-primary col-2">Submit</button>
+                    <button type="button" id="createNew" class="btn btn-warning col-2">Create New User</button>
                 </div>
-                <div class="row justify-content-between">
-                    <button type="submit" id="addNote" class="btn btn-primary col-2 mt-2">Add Note</button>
+                <div class="row justify-content-around mt-2">
+                    <button type="button" id="fblogin" class="btn btn-info col-2">Login with Facebook</button>
+                    <button type="button" id="glogin" class="btn btn-success col-2">Login with Google</button>
                 </div>
+
             </div>
         </div>
 
-        <div class="container mt-3">
-
-            <h5>Notes<span class="saving">Saving...</span></h5>
-            <div id="notes">
-                <h1>Note display between here</h4>
-                    <div class="note">
-                        <span class="input"><textarea data-id="{{ @index }}">Note Content</textarea></span>
-
-                        <button class="remove btn btn-xs" data-id="{{ @index }}"><i class="fa fa-trash"
-                                    aria-hidden="true"></i></button>
-                    </div>
-                    <h1>Note display between here</h4>
+        <div class="container">
+            <div class="container">
+                <h3>Please fill in the below for Sign-up</h3>
+            </div>
+            <div class="form-group" id="signUpform">
+                <label for="signUpUser" class="form-label mt-4">User Name</label>
+                <input type="text" class="form-control" id="signUpUser" placeholder="Enter user name">
+                <br>
+                <label for="signUpEmail" class="form-label mt-4">Email address</label>
+                <input type="email" class="form-control" id="signUpEmail" aria-describedby="emailHelp" placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                <br>
+                <label for="signUpPassword" class="form-label mt-4">Password</label>
+                <input type="password" class="form-control" id="signUpPassword" placeholder="Password">
+                <div class="row justify-content-around mt-4">
+                    <button type="submit" id="signUpSubmit" class="btn btn-primary col-2">Submit</button>
+                </div>
             </div>
 
         </div>
 
-    </div>
 
 
 
@@ -65,13 +77,12 @@
 
 
 
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    {{!-- CDN handlebars = for Handlebars.compile --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
-    {{!-- CDN axios = for sending API calls (promise based)--}}
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="notes.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="notes.js"></script>
 </body>
 
 </html>
