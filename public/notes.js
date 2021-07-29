@@ -31,7 +31,8 @@ $(document).ready(function() {
         newNote.add = add;
         console.log(newNote, 'post newNote')
 
-        axios.post('/api/info/add', newNote).then((res) => {
+        axios.post('/user/add', newNote)
+            .then((res) => {
                 console.log('post in frontend', res.data);
                 reloadNotes(res.data);
             })
@@ -48,7 +49,7 @@ $(document).ready(function() {
         let amend = {};
         amend.content = changes;
 
-        axios.put('/api/info/change/' + noteid, amend).then((res) => {
+        axios.put('/user/change/' + noteid, amend).then((res) => {
             reloadNotes(res.data);
         }).catch(err => console.log(err));
     })
@@ -57,7 +58,7 @@ $(document).ready(function() {
     $('#notes').on('click', '.remove', (event) => {
         let noteid = $(event.currentTarget).data('id')
 
-        axios.delete('/api/info/delete/' + noteid).then((res) => {
+        axios.delete('/user/delete/' + noteid).then((res) => {
             reloadNotes(res.data);
         }).catch(err => console.log(err));
     })

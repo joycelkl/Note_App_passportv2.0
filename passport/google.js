@@ -13,7 +13,6 @@ function googleCallback(accessToken, refreshToken, profile, done) {
     // User.findOrCreate({ googleId: profile.id }, function (err, user) {
     // return cb(err, user);});
 
-    console.log('google profile:', profile)
     console.log('profile ID', profile.id);
     console.log('username', profile.displayName);
     console.log('email', profile.emails[0].value)

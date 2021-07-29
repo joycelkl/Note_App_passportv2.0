@@ -6,6 +6,7 @@ const TABLE_NAME = "users";
 const LocalStrategy = require('passport-local').Strategy;
 
 module.exports = new LocalStrategy(async(email, password, done) => {
+    console.log('loggin in')
 
     //try putting the username in
     try {

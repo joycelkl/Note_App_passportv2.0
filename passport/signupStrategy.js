@@ -5,9 +5,13 @@ const hashFunction = require('./hashFunction');
 const TABLE_NAME = 'users';
 const LocalStrategy = require('passport-local').Strategy;
 
-module.exports = new LocalStrategy(async(username, email, password, done) => {
+module.exports = new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password',
+    passReqToCallback: true,
+}, async(req, email, password, done) => {
     console.log('sign-up');
-    console.log('username', username)
+    console.log('username', req.body.username)
     console.log('email', email);
     console.log('password', password);
 
@@ -27,23 +31,22 @@ module.exports = new LocalStrategy(async(username, email, password, done) => {
         //otherwise, hash the password
         let hashedPassword = await hashFunction.hashPassword(password);
         const newUser = {
-            username: username,
+            username: req.body.username,
             email: email,
             hash: hashedPassword,
         };
 
-        const user = { username: username }
-
         //insert new user to database and get the id
         let userId = await knex(TABLE_NAME).insert(newUser).returning('id');
-        console.log('userID', userId)
+        console.log('userID', userId);
 
         //assign that id to the user
-        user.id = userId[0];
-        console.log('user:', user);
+        newUser.id = userId[0];
+        console.log('newUser:', newUser);
 
         //done - pass back the user object
-        done(null, user);
+        done(null, newUser);
+
     } catch (error) {
         throw new Error(error);
     }

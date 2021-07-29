@@ -21,9 +21,8 @@ class NoteRouter {
 
 
     post(req, res) {
-        console.log('req', req)
         console.log('posting data', req.body.add)
-        return this.noteService.add(req.body.add, req.user.username)
+        return this.noteService.add(req.body.add, req.user.id)
             .then((data) => {
                 console.log("posting done update", data);
                 return res.send(data)
@@ -35,7 +34,7 @@ class NoteRouter {
 
     put(req, res) {
 
-        return this.noteService.change(req.params.id, req.body.content, req.user.username).then((data) => {
+        return this.noteService.change(req.params.id, req.body.content, req.user.id).then((data) => {
             console.log("put done update", data)
             return res.send(data)
         }).catch((err) => {
@@ -46,7 +45,7 @@ class NoteRouter {
 
     delete(req, res) {
 
-        return this.noteService.delete(req.params.id, req.user.username).then((data) => {
+        return this.noteService.delete(req.params.id, req.user.id).then((data) => {
             console.log('delete done update', data)
             return res.send(data)
         }).catch((err) => {

@@ -1,5 +1,6 @@
 // middleware to check if the user is logged in
 const isLoggedIn = function(req, res, next) {
+    console.log('isloggedin fucntion')
     if (req.isAuthenticated()) {
         console.log(req.cookies);
         console.log(req.session.passport.user, "passport USER");

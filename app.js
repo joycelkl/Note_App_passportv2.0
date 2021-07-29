@@ -30,11 +30,11 @@ app.use(cookieParser());
 app.use(
     // Creating a new session generates a new session id, stores that in a session cookie, and
     expressSession({
-        secret: "secret",
+        secret: process.env.SESSION_SECRET,
         // save the user
         // if false, will not save session to browser
         resave: true,
-        // if saveUninitialized is false, session object will not be stored in sesion store
+        // if saveUninitialized is false, session object will not be stored in session store
         saveUninitialized: true,
     })
 );
@@ -54,6 +54,11 @@ app.get('/login', (req, res) => {
     res.render('login', { layout: 'main' })
 })
 
+app.post('/login', passportFunctions.authenticate('local-login', {
+    successRedirect: "/user",
+    failureRedirect: "/error",
+}))
+
 app.get('/signup', (req, res) => {
     res.render('signup', { layout: 'main' })
 })
@@ -61,11 +66,6 @@ app.get('/signup', (req, res) => {
 app.post('/signup', passportFunctions.authenticate('local-signup', {
     successRedirect: "/login",
     failureRedirect: "/error",
-}))
-
-app.post('/login', passportFunctions.authenticate('local-login', {
-    successRedirect: '/user',
-    failureRedirect: '/error',
 }))
 
 app.get('/auth/gmail', passportFunctions.authenticate('google', {
@@ -89,9 +89,9 @@ app.get('/auth/facebook/callback', passportFunctions.authenticate('facebook', {
 //list all note after login into app
 app.get('/user', checkAuth.isLoggedIn, (req, res) => {
 
-    console.log('auth detail', req.user.username);
+    console.log('auth detail', req.user.id);
 
-    noteService.list(req.user.username).then((data) => {
+    noteService.list(req.user.id).then((data) => {
         console.log(data, "in index js");
         return res.render("index", {
             user: req.user.username,

@@ -3,14 +3,17 @@ const bcrypt = require('bcrypt');
 function hashPassword(password) {
     console.log('before hash', password)
     return new Promise((resolve, reject) => {
-        bcrypt.genSalt(password, (err, salt) => {
+        bcrypt.genSalt((err, salt) => {
             if (err) {
+                console.log('genSalt err', err)
                 reject(err);
             }
             bcrypt.hash(password, salt, (err, hash) => {
                 if (err) {
+                    console.log('hash error', err)
                     reject(err);
                 }
+                console.log('hashed', hash)
                 resolve(hash);
             });
         });
